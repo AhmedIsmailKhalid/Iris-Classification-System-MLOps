@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+docs/
+README.md
+*.md
+
+# Tests
+tests/
+.pytest_cache/
+
+# Frontend
+frontend/
+
+# CI/CD
+.github/
+
+# Environment
+.env
+.env.*
+
+# Development
+notebooks/
+scripts/
+
+# Data (copy only what's needed)
+data/processed/

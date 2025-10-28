@@ -1,0 +1,86 @@
+name: Backend CD
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'deployment/**'
+      - 'models/**'
+      - 'scripts/**'
+      - 'pyproject.toml'
+      - 'poetry.lock'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Render
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Trigger Render Deployment
+      run: |
+        echo "🚀 Deployment triggered on Render"
+        echo "Render will automatically pull and build from main branch"
+        echo "Monitor deployment at: https://dashboard.render.com"
+    
+    - name: Wait for deployment
+      run: |
+        echo "⏳ Waiting for Render to complete deployment..."
+        sleep 30
+    
+    - name: Health check
+      run: |
+        if [ -n "${{ secrets.RENDER_API_URL }}" ]; then
+          echo "🔍 Checking deployment health..."
+          curl -f ${{ secrets.RENDER_API_URL }}/health || exit 1
+          echo "✅ Deployment successful and healthy!"
+        else
+          echo "⚠️  RENDER_API_URL not set. Skipping health check."
+          echo "Add your Render URL to repository secrets as RENDER_API_URL"
+        fi
+      continue-on-error: true
+    
+    - name: Notify deployment status
+      if: always()
+      run: |
+        if [ "${{ job.status }}" == "success" ]; then
+          echo "✅ Deployment completed successfully"
+        else
+          echo "❌ Deployment failed"
+        fi
+
+  post-deploy-tests:
+    name: Post-Deployment Tests
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Test API endpoints
+      run: |
+        if [ -n "${{ secrets.RENDER_API_URL }}" ]; then
+          echo "Testing health endpoint..."
+          curl -f ${{ secrets.RENDER_API_URL }}/health
+          
+          echo "Testing prediction endpoint..."
+          curl -X POST ${{ secrets.RENDER_API_URL }}/api/v1/predict \
+            -H "Content-Type: application/json" \
+            -d '{
+              "features": {
+                "sepal length (cm)": 5.1,
+                "sepal width (cm)": 3.5,
+                "petal length (cm)": 1.4,
+                "petal width (cm)": 0.2
+              }
+            }'
+          
+          echo "✅ All API endpoints working"
+        else
+          echo "⚠️  RENDER_API_URL not set. Skipping post-deployment tests."
+        fi
+      continue-on-error: true

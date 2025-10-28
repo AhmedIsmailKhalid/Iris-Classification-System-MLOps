@@ -1,0 +1,15 @@
+{
+    "models": [],
+    "active_model": null,
+    "metadata": {
+      "dataset": "iris",
+      "features": [
+        "sepal length (cm)",
+        "sepal width (cm)",
+        "petal length (cm)",
+        "petal width (cm)"
+      ],
+      "target_classes": ["setosa", "versicolor", "virginica"],
+      "num_classes": 3
+    }
+  }
