@@ -14,8 +14,7 @@ sys.path.insert(0, str(project_root))
 
 # Configure logging for tests
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 
 

@@ -15,14 +15,14 @@ from src.data.load_data import get_iris_data
 def main():
     """Generate iris.csv file."""
     print("Generating iris.csv from scikit-learn...")
-    
+
     try:
         # This will load from sklearn and save to CSV
         X, y = get_iris_data(use_csv=False)
         print(f" Successfully generated iris.csv with {len(X)} samples")
         print(f" Features: {list(X.columns)}")
         print(f" Classes: {y.nunique()}")
-        
+
     except Exception as e:
         print(f" Error generating dataset: {str(e)}")
 
