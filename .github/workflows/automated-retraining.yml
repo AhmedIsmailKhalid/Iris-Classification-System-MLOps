@@ -118,8 +118,8 @@ jobs:
     - name: Run tests on new model
       if: steps.drift-check.outcome == 'success'
       run: |
-        echo "🧪 Testing retrained model..."
-        poetry run pytest tests/test_model.py -v
+        echo " Testing retrained model..."
+        poetry run pytest tests/ -v --cov=src --cov-report=term-missing --cov-fail-under=80
     
     - name: Commit new model
       if: steps.drift-check.outcome == 'success'
@@ -145,6 +145,28 @@ jobs:
         - Triggered by: ${{ github.event_name }}
         " || echo "No changes to commit"
     
+        
+    - name: Generate test data if none exists
+      if: steps.check-data.outputs.has_data != 'true'
+      run: |
+        echo "No data found, generating synthetic drifted data for testing..."
+        poetry run python -c "
+        from src.monitoring.data_generator import SyntheticDataGenerator
+        from src.monitoring.data_logger import DataLogger
+        
+        generator = SyntheticDataGenerator()
+        logger = DataLogger()
+        
+        # Generate drifted data
+        data = generator.generate_drifted_data(n_samples=50, drift_type='shift', drift_magnitude=2.5)
+        logger.save_new_data(data)
+        print(f'Generated {len(data)} synthetic samples for testing')
+        "
+        echo "has_data=true" >> $GITHUB_OUTPUT
+        echo "samples=50" >> $GITHUB_OUTPUT
+      id: generate-data
+
+      
     - name: Push changes
       if: steps.drift-check.outcome == 'success'
       uses: ad-m/github-push-action@master
