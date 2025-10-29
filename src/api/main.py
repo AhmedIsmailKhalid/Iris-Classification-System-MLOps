@@ -9,7 +9,7 @@ from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from src.api.routes import health, predict
+from src.api.routes import health, monitoring, predict
 from src.core.config import settings
 from src.core.logging import setup_logging
 from src.models.model_loader import model_loader
@@ -119,6 +119,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 # Include routers
 app.include_router(health.router)
 app.include_router(predict.router)
+app.include_router(monitoring.router, prefix="/api/v1/monitoring")
 
 
 # Request logging middleware

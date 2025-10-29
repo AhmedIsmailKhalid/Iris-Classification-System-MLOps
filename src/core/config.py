@@ -4,8 +4,9 @@ Loads configuration from environment variables.
 """
 
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -40,6 +41,15 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8", case_sensitive=False, extra="ignore"
+    )
+
+    # GitHub Integration
+    github_token: Optional[str] = Field(
+        None, description="GitHub Personal Access Token"
+    )
+    github_repo: str = Field(
+        "AhmedIsmailKhalid/Iris-Classification-System-MLOps",
+        description="GitHub repository (owner/repo)",
     )
 
     @property

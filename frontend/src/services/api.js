@@ -66,4 +66,20 @@ export const compareFlowers = async (flower1Features, flower2Features) => {
   return response.data;
 };
 
+// Monitoring endpoints
+export const generateData = async (params) => {
+  const response = await api.post('/api/v1/monitoring/generate-data', params);
+  return response.data;
+};
+
+export const getDataStats = async () => {
+  const response = await api.get('/api/v1/monitoring/data-stats');
+  return response.data;
+};
+
+export const checkDrift = async () => {
+  const response = await api.post('/api/v1/monitoring/check-drift');
+  return response.data;
+};
+
 export default api;

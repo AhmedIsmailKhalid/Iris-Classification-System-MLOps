@@ -10,6 +10,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import ErrorMessage from './components/ErrorMessage';
 import { predict } from './services/api';
 import { savePrediction } from './utils/storage';
+import DriftMonitor from './components/DriftMonitor';
 
 function App() {
   const [features, setFeatures] = useState({
@@ -140,6 +141,7 @@ function App() {
           {/* Right Column - History & Model Info */}
           <div className="lg:col-span-1 space-y-6">
             <ModelPerformanceDashboard />
+            <DriftMonitor />
             <PredictionHistory 
               key={historyKey}
               onReload={handleReloadFromHistory}
