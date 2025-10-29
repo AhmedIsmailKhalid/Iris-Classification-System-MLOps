@@ -76,6 +76,78 @@ class TestDataLoading:
         assert isinstance(y, pd.Series)
         assert len(X) == 150
 
+    def test_load_iris_from_sklearn_column_types(self):
+        """Test that loaded data has correct column types."""
+        X, y = load_iris_from_sklearn()
+
+        # Check all feature columns are numeric
+        numeric_cols = X.select_dtypes(include=[np.number]).columns
+        assert len(numeric_cols) == 4
+
+        # Check target is categorical
+        assert X["species"].dtype == "object"
+
+    def test_load_iris_from_sklearn_no_missing_values(self):
+        """Test that loaded data has no missing values."""
+        X, y = load_iris_from_sklearn()
+
+        assert X.isnull().sum().sum() == 0
+        assert not np.isnan(y).any()
+
+    def test_load_iris_from_csv_with_caching(self):
+        """Test loading from CSV after it's been cached."""
+        # First load creates CSV
+        X1, y1 = load_iris_from_sklearn()
+
+        # Verify CSV exists
+        csv_path = Path("data/raw/iris.csv")
+        assert csv_path.exists()
+
+        # Second load should read from CSV (not sklearn)
+        X2, y2 = load_iris_from_sklearn()
+
+        # Results should be identical
+        pd.testing.assert_frame_equal(X1, X2)
+        np.testing.assert_array_equal(y1, y2)
+
+    def test_iris_dataset_balance(self):
+        """Test that dataset is balanced across classes."""
+        X, y = load_iris_from_sklearn()
+
+        # Count each class
+        class_counts = X["species"].value_counts()
+
+        # Should have exactly 50 of each class
+        assert len(class_counts) == 3
+        assert all(count == 50 for count in class_counts)
+
+    def test_iris_feature_ranges(self):
+        """Test that feature values are within expected ranges."""
+        X, y = load_iris_from_sklearn()
+
+        # All features should be positive
+        assert (
+            (
+                X[
+                    [
+                        "sepal length (cm)",
+                        "sepal width (cm)",
+                        "petal length (cm)",
+                        "petal width (cm)",
+                    ]
+                ]
+                > 0
+            )
+            .all()
+            .all()
+        )
+
+        # Check reasonable upper bounds
+        assert X["sepal length (cm)"].max() < 10
+        assert X["sepal width (cm)"].max() < 10
+        assert X["petal length (cm)"].max() < 10
+        assert X["petal width (cm)"].max() < 10
+
 
 class TestPreprocessing:
     """Tests for preprocessing functions."""

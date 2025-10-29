@@ -409,6 +409,296 @@ class TestModelRegistry:
             assert active_model["metrics"]["test_accuracy"] == 0.96
 
 
+class TestSHAPExplanations:
+    """Tests for SHAP feature contribution explanations."""
+
+    @pytest.fixture
+    def trained_predictor_with_shap(self):
+        """Fixture providing a trained predictor for SHAP tests."""
+        X, y = load_iris_from_sklearn()
+        X_train, X_test, y_train, y_test, preprocessor = prepare_train_test_split(
+            X, y, test_size=0.2, random_state=42
+        )
+
+        trainer = IrisModelTrainer()
+        trainer.train(X_train, y_train, X_test, y_test)
+
+        predictor = IrisPredictor(
+            model=trainer.model,
+            preprocessor=preprocessor,
+            class_names=trainer.class_names,
+        )
+
+        return predictor
+
+    def test_predict_with_shap_includes_contributions(
+        self, trained_predictor_with_shap
+    ):
+        """Test that prediction with SHAP includes feature contributions."""
+        predictor = trained_predictor_with_shap
+
+        features = {
+            "sepal length (cm)": 5.1,
+            "sepal width (cm)": 3.5,
+            "petal length (cm)": 1.4,
+            "petal width (cm)": 0.2,
+        }
+
+        result = predictor.predict(features, include_shap=True)
+
+        # Check SHAP values are present
+        assert "feature_contributions" in result
+        assert result["feature_contributions"] is not None
+
+        # Check all features have contributions
+        contributions = result["feature_contributions"]
+        assert len(contributions) == 4
+
+        # Check feature names are correct
+        expected_features = {
+            "sepal length (cm)",
+            "sepal width (cm)",
+            "petal length (cm)",
+            "petal width (cm)",
+        }
+        assert set(contributions.keys()) == expected_features
+
+        # Check all contributions are floats
+        for feature, contribution in contributions.items():
+            assert isinstance(contribution, float)
+            assert not np.isnan(contribution)
+
+    def test_predict_without_shap_no_contributions(self, trained_predictor_with_shap):
+        """Test that prediction without SHAP flag doesn't include contributions."""
+        predictor = trained_predictor_with_shap
+
+        features = {
+            "sepal length (cm)": 5.1,
+            "sepal width (cm)": 3.5,
+            "petal length (cm)": 1.4,
+            "petal width (cm)": 0.2,
+        }
+
+        result = predictor.predict(features, include_shap=False)
+
+        # SHAP values should not be present
+        assert "feature_contributions" not in result
+
+    def test_shap_contributions_sorted_by_importance(self, trained_predictor_with_shap):
+        """Test that SHAP contributions are sorted by absolute value."""
+        predictor = trained_predictor_with_shap
+
+        features = {
+            "sepal length (cm)": 5.1,
+            "sepal width (cm)": 3.5,
+            "petal length (cm)": 1.4,
+            "petal width (cm)": 0.2,
+        }
+
+        result = predictor.predict(features, include_shap=True)
+        contributions = result["feature_contributions"]
+
+        # Check that contributions are sorted by absolute value
+        contribution_values = list(contributions.values())
+        abs_values = [abs(v) for v in contribution_values]
+
+        # Should be in descending order
+        assert abs_values == sorted(abs_values, reverse=True)
+
+    def test_shap_explainer_lazy_initialization(self, trained_predictor_with_shap):
+        """Test that SHAP explainer is created only when needed."""
+        predictor = trained_predictor_with_shap
+
+        # Initially, explainer should be None
+        assert predictor._explainer is None
+
+        # Make prediction without SHAP
+        features = {
+            "sepal length (cm)": 5.1,
+            "sepal width (cm)": 3.5,
+            "petal length (cm)": 1.4,
+            "petal width (cm)": 0.2,
+        }
+        predictor.predict(features, include_shap=False)
+
+        # Explainer should still be None
+        assert predictor._explainer is None
+
+        # Make prediction with SHAP
+        predictor.predict(features, include_shap=True)
+
+        # Now explainer should be created
+        assert predictor._explainer is not None
+
+    def test_shap_explainer_reused(self, trained_predictor_with_shap):
+        """Test that SHAP explainer is reused across predictions."""
+        predictor = trained_predictor_with_shap
+
+        features = {
+            "sepal length (cm)": 5.1,
+            "sepal width (cm)": 3.5,
+            "petal length (cm)": 1.4,
+            "petal width (cm)": 0.2,
+        }
+
+        # First prediction with SHAP
+        predictor.predict(features, include_shap=True)
+        first_explainer = predictor._explainer
+
+        # Second prediction with SHAP
+        predictor.predict(features, include_shap=True)
+        second_explainer = predictor._explainer
+
+        # Should be the same explainer instance
+        assert first_explainer is second_explainer
+
+    def test_shap_contributions_different_for_different_classes(
+        self, trained_predictor_with_shap
+    ):
+        """Test that SHAP contributions differ for different flower species."""
+        predictor = trained_predictor_with_shap
+
+        # Setosa features (small petal)
+        setosa_features = {
+            "sepal length (cm)": 5.1,
+            "sepal width (cm)": 3.5,
+            "petal length (cm)": 1.4,
+            "petal width (cm)": 0.2,
+        }
+
+        # Virginica features (large petal)
+        virginica_features = {
+            "sepal length (cm)": 6.3,
+            "sepal width (cm)": 3.3,
+            "petal length (cm)": 6.0,
+            "petal width (cm)": 2.5,
+        }
+
+        setosa_result = predictor.predict(setosa_features, include_shap=True)
+        virginica_result = predictor.predict(virginica_features, include_shap=True)
+
+        # SHAP contributions should be different
+        setosa_contrib = setosa_result["feature_contributions"]
+        virginica_contrib = virginica_result["feature_contributions"]
+
+        # At least one feature should have different contribution
+        differences_found = False
+        for feature in setosa_contrib.keys():
+            if not np.isclose(
+                setosa_contrib[feature], virginica_contrib[feature], rtol=0.1
+            ):
+                differences_found = True
+                break
+
+        assert (
+            differences_found
+        ), "SHAP contributions should differ for different species"
+
+    def test_shap_contributions_reasonable_magnitudes(
+        self, trained_predictor_with_shap
+    ):
+        """Test that SHAP contribution values are reasonable."""
+        predictor = trained_predictor_with_shap
+
+        features = {
+            "sepal length (cm)": 5.1,
+            "sepal width (cm)": 3.5,
+            "petal length (cm)": 1.4,
+            "petal width (cm)": 0.2,
+        }
+
+        result = predictor.predict(features, include_shap=True)
+        contributions = result["feature_contributions"]
+
+        # SHAP values should typically be between -5 and 5 for this dataset
+        for feature, contribution in contributions.items():
+            assert (
+                -10 <= contribution <= 10
+            ), f"SHAP value for {feature} is unreasonable: {contribution}"
+
+    def test_batch_predict_without_shap_by_default(self, trained_predictor_with_shap):
+        """Test that batch prediction doesn't include SHAP by default (performance)."""
+        predictor = trained_predictor_with_shap
+
+        features = pd.DataFrame(
+            [
+                {
+                    "sepal length (cm)": 5.1,
+                    "sepal width (cm)": 3.5,
+                    "petal length (cm)": 1.4,
+                    "petal width (cm)": 0.2,
+                },
+                {
+                    "sepal length (cm)": 6.4,
+                    "sepal width (cm)": 3.2,
+                    "petal length (cm)": 4.5,
+                    "petal width (cm)": 1.5,
+                },
+            ]
+        )
+
+        results = predictor.predict_batch(features)
+
+        # By default, batch predictions should not include SHAP
+        for result in results:
+            assert "feature_contributions" not in result
+
+    def test_batch_predict_with_shap_when_requested(self, trained_predictor_with_shap):
+        """Test that batch prediction can include SHAP when explicitly requested."""
+        predictor = trained_predictor_with_shap
+
+        features = pd.DataFrame(
+            [
+                {
+                    "sepal length (cm)": 5.1,
+                    "sepal width (cm)": 3.5,
+                    "petal length (cm)": 1.4,
+                    "petal width (cm)": 0.2,
+                }
+            ]
+        )
+
+        results = predictor.predict_batch(features, include_shap=True)
+
+        # Should include SHAP when requested
+        assert len(results) == 1
+        assert "feature_contributions" in results[0]
+        assert results[0]["feature_contributions"] is not None
+
+    def test_shap_failure_doesnt_break_prediction(self, trained_predictor_with_shap):
+        """Test that SHAP calculation failure doesn't break prediction."""
+        predictor = trained_predictor_with_shap
+
+        # Temporarily break the explainer to simulate failure
+        original_get_explainer = predictor._get_explainer
+
+        def broken_explainer():
+            raise Exception("Simulated SHAP failure")
+
+        predictor._get_explainer = broken_explainer
+
+        features = {
+            "sepal length (cm)": 5.1,
+            "sepal width (cm)": 3.5,
+            "petal length (cm)": 1.4,
+            "petal width (cm)": 0.2,
+        }
+
+        # Prediction should still work
+        result = predictor.predict(features, include_shap=True)
+
+        # Basic prediction fields should be present
+        assert "prediction" in result
+        assert "confidence" in result
+        assert "probabilities" in result
+
+        # SHAP should be None due to failure
+        assert result["feature_contributions"] is None
+
+        # Restore original method
+        predictor._get_explainer = original_get_explainer
+
+
 class TestModelLoader:
     """Tests for model loader singleton."""
 

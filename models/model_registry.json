@@ -1,15 +1,31 @@
 {
-    "models": [],
-    "active_model": null,
-    "metadata": {
-      "dataset": "iris",
-      "features": [
-        "sepal length (cm)",
-        "sepal width (cm)",
-        "petal length (cm)",
-        "petal width (cm)"
-      ],
-      "target_classes": ["setosa", "versicolor", "virginica"],
-      "num_classes": 3
+  "models": [
+    {
+      "model_id": "model_20251028_213904_972460",
+      "model_path": "models\\iris_classifier.joblib",
+      "timestamp": "2025-10-28T21:39:04.972460",
+      "metrics": {
+        "test_accuracy": 0.9,
+        "test_f1_macro": 0.899749373433584,
+        "train_accuracy": 0.95
+      },
+      "model_type": "logistic_regression"
     }
+  ],
+  "active_model": "model_20251028_213904_972460",
+  "metadata": {
+    "dataset": "iris",
+    "features": [
+      "sepal length (cm)",
+      "sepal width (cm)",
+      "petal length (cm)",
+      "petal width (cm)"
+    ],
+    "target_classes": [
+      "setosa",
+      "versicolor",
+      "virginica"
+    ],
+    "num_classes": 3
   }
+}
