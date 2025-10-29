@@ -63,7 +63,7 @@ async def predict(request: PredictionRequest) -> PredictionResponse:
     """
     try:
         predictor = _get_predictor()
-        
+
         # Convert request to feature dict
         features = {
             "sepal length (cm)": request.features.sepal_length,
@@ -71,34 +71,38 @@ async def predict(request: PredictionRequest) -> PredictionResponse:
             "petal length (cm)": request.features.petal_length,
             "petal width (cm)": request.features.petal_width,
         }
-        
+
         # Make prediction with SHAP values
-        result = predictor.predict(features, include_shap=True)  # ← ADD include_shap=True
-        
+        result = predictor.predict(
+            features, include_shap=True
+        )  # ← ADD include_shap=True
+
         logger.info(
             f"Prediction made: {result['prediction']} "
             f"(confidence: {result['confidence']:.4f})"
         )
-        
+
         return PredictionResponse(
             prediction=result["prediction"],
             confidence=result["confidence"],
             probabilities=result["probabilities"],
             model_version=settings.model_version,
-            feature_contributions=result.get("feature_contributions"),  # ← ADD this line
+            feature_contributions=result.get(
+                "feature_contributions"
+            ),  # ← ADD this line
         )
-        
+
     except ValueError as e:
         logger.error(f"Validation error: {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail=f"Invalid input features: {str(e)}"
+            detail=f"Invalid input features: {str(e)}",
         )
     except Exception as e:
         logger.error(f"Prediction error: {str(e)}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Prediction failed: {str(e)}"
+            detail=f"Prediction failed: {str(e)}",
         )
 
 

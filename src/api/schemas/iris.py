@@ -115,8 +115,7 @@ class PredictionResponse(BaseModel):
         ..., description="Version of the model used", examples=["v1.0.0"]
     )
     feature_contributions: Optional[Dict[str, float]] = Field(  # ← Should be here
-        None, 
-        description="SHAP feature contributions"
+        None, description="SHAP feature contributions"
     )
 
     model_config = {
