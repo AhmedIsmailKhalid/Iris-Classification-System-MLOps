@@ -25,15 +25,16 @@ data_generator = SyntheticDataGenerator()
 data_logger = DataLogger()
 drift_detector = DriftDetector()
 github_trigger = GitHubWorkflowTrigger(
-    token=settings.github_token,
-    repo=settings.github_repo
+    token=settings.github_token, repo=settings.github_repo
 )
 
 
 class GenerateDataRequest(BaseModel):
     """Request model for data generation."""
 
-    n_samples: int = Field(50, ge=10, le=500, description="Number of samples to generate")
+    n_samples: int = Field(
+        50, ge=10, le=500, description="Number of samples to generate"
+    )
     data_type: Literal["normal", "drifted"] = Field(
         "normal", description="Type of data to generate"
     )
@@ -58,7 +59,7 @@ class DataStatsResponse(BaseModel):
     "/generate-data",
     status_code=status.HTTP_200_OK,
     summary="Generate synthetic data",
-    description="Generate synthetic iris data for testing drift detection"
+    description="Generate synthetic iris data for testing drift detection",
 )
 async def generate_synthetic_data(request: GenerateDataRequest) -> Dict:
     """
@@ -71,9 +72,7 @@ async def generate_synthetic_data(request: GenerateDataRequest) -> Dict:
         Dictionary with generation results
     """
     try:
-        logger.info(
-            f"Generating {request.n_samples} {request.data_type} samples"
-        )
+        logger.info(f"Generating {request.n_samples} {request.data_type} samples")
 
         if request.data_type == "normal":
             data = data_generator.generate_normal_data(request.n_samples)
@@ -102,7 +101,7 @@ async def generate_synthetic_data(request: GenerateDataRequest) -> Dict:
         logger.error(f"Failed to generate data: {str(e)}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Data generation failed: {str(e)}"
+            detail=f"Data generation failed: {str(e)}",
         )
 
 
@@ -111,7 +110,7 @@ async def generate_synthetic_data(request: GenerateDataRequest) -> Dict:
     response_model=DataStatsResponse,
     status_code=status.HTTP_200_OK,
     summary="Get data statistics",
-    description="Get current data collection and drift statistics"
+    description="Get current data collection and drift statistics",
 )
 async def get_data_stats() -> DataStatsResponse:
     """
@@ -145,7 +144,7 @@ async def get_data_stats() -> DataStatsResponse:
         logger.error(f"Failed to get data stats: {str(e)}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to retrieve data statistics: {str(e)}"
+            detail=f"Failed to retrieve data statistics: {str(e)}",
         )
 
 
@@ -153,7 +152,7 @@ async def get_data_stats() -> DataStatsResponse:
     "/check-drift",
     status_code=status.HTTP_200_OK,
     summary="Check for data drift",
-    description="Perform drift detection on accumulated data"
+    description="Perform drift detection on accumulated data",
 )
 async def check_drift() -> Dict:
     """
@@ -187,7 +186,7 @@ async def check_drift() -> Dict:
         logger.error(f"Drift detection failed: {str(e)}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Drift detection failed: {str(e)}"
+            detail=f"Drift detection failed: {str(e)}",
         )
 
 
@@ -195,24 +194,24 @@ async def check_drift() -> Dict:
     "/trigger-retraining",
     status_code=status.HTTP_200_OK,
     summary="Trigger model retraining",
-    description="Manually trigger automated retraining workflow via GitHub Actions API"
+    description="Manually trigger automated retraining workflow via GitHub Actions API",
 )
 async def trigger_retraining(force: bool = False) -> Dict:
     """
     Trigger GitHub Actions retraining workflow.
-    
+
     Args:
         force: Force retraining even with insufficient data
-    
+
     Returns:
         Status of trigger request
     """
     try:
         logger.info("Manual retraining trigger requested")
-        
+
         # Check if we have data
         new_data = data_logger.load_new_data()
-        
+
         if new_data is None or len(new_data) < 30:
             if not force:
                 return {
@@ -222,14 +221,14 @@ async def trigger_retraining(force: bool = False) -> Dict:
                     "required_samples": 30,
                     "suggestion": "Use force=true to retrain anyway, or generate more data",
                 }
-        
+
         # Trigger GitHub Actions workflow
         result = github_trigger.trigger_workflow(
             workflow_id="automated-retraining.yml",
             ref="main",
-            inputs={"force": str(force).lower()}
+            inputs={"force": str(force).lower()},
         )
-        
+
         if result["success"]:
             return {
                 "success": True,
@@ -245,12 +244,12 @@ async def trigger_retraining(force: bool = False) -> Dict:
                 "error": result.get("error"),
                 "manual_trigger_url": f"https://github.com/{settings.github_repo}/actions/workflows/automated-retraining.yml",
             }
-        
+
     except Exception as e:
         logger.error(f"Failed to trigger retraining: {str(e)}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to trigger retraining: {str(e)}"
+            detail=f"Failed to trigger retraining: {str(e)}",
         )
 
 
@@ -258,26 +257,25 @@ async def trigger_retraining(force: bool = False) -> Dict:
     "/workflow-status",
     status_code=status.HTTP_200_OK,
     summary="Get retraining workflow status",
-    description="Get recent runs of the automated retraining workflow"
+    description="Get recent runs of the automated retraining workflow",
 )
 async def get_workflow_status() -> Dict:
     """
     Get status of recent retraining workflows.
-    
+
     Returns:
         Recent workflow run information
     """
     try:
         result = github_trigger.get_workflow_status(
-            workflow_id="automated-retraining.yml",
-            limit=5
+            workflow_id="automated-retraining.yml", limit=5
         )
-        
+
         return result
-        
+
     except Exception as e:
         logger.error(f"Failed to get workflow status: {str(e)}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to retrieve workflow status: {str(e)}"
+            detail=f"Failed to retrieve workflow status: {str(e)}",
         )
