@@ -19,6 +19,9 @@ jobs:
   check-and-retrain:
     name: Check Drift & Retrain Model
     runs-on: ubuntu-latest
+    permissions:  
+      contents: write 
+      actions: read
     
     steps:
     - name: Checkout code
@@ -162,10 +165,8 @@ jobs:
     
     - name: Push changes
       if: steps.drift-check.outcome == 'success'
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+      run : |
+        git push https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
     
     - name: Create summary
       if: always()

@@ -61,8 +61,8 @@ htmlcov/
 Thumbs.db
 
 # Model artifacts (if large, use Git LFS)
-models/*.joblib
-models/*.pkl
+# # models/*.joblib
+# models/*.pkl
 !models/.gitkeep
 
 # Data (if sensitive or large)
