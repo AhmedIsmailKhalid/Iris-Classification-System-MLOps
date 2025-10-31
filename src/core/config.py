@@ -68,6 +68,11 @@ class Settings(BaseSettings):
     github_repo: str = ""
     github_workflow_id: str = "automated-retraining.yml"
 
+    @property
+    def is_production(self) -> bool:
+        """Check if running in production environment."""
+        return self.environment.lower() == "production"
+
 
 # Create global settings instance
 settings = Settings()
