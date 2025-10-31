@@ -1,27 +1,35 @@
 """
-Configuration management using Pydantic Settings.
-Loads configuration from environment variables.
+Application configuration module.
+Loads settings from environment variables with sensible defaults.
 """
 
 from pathlib import Path
-from typing import List, Optional, Union
+from typing import List, Union
 
-from pydantic import Field, field_validator
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """
-    Application settings loaded from environment variables.
-    """
+    """Application settings loaded from environment variables."""
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+        extra="ignore",
+    )
 
     # API Configuration
+    api_title: str = "Iris ML Pipeline API"
+    api_version: str = "1.0.0"
+    api_description: str = (
+        "Production-grade ML API for Iris flower classification with "
+        "automated drift detection and model retraining"
+    )
     api_host: str = "0.0.0.0"
     api_port: int = 8000
     api_reload: bool = False
-    api_title: str = "Iris ML Pipeline API"
-    api_version: str = "1.0.0"
-    api_description: str = "Production-grade ML classification API for Iris dataset"
 
     # CORS Configuration
     allowed_origins: Union[List[str], str] = [
@@ -48,43 +56,18 @@ class Settings(BaseSettings):
 
     # Logging Configuration
     log_level: str = "INFO"
+    log_format: str = (
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
 
     # Environment
     environment: str = "development"
 
-    model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf-8", case_sensitive=False, extra="ignore"
-    )
-
-    # GitHub Integration
-    github_token: Optional[str] = Field(
-        None, description="GitHub Personal Access Token"
-    )
-    github_repo: str = Field(
-        "AhmedIsmailKhalid/Iris-Classification-System-MLOps",
-        description="GitHub repository (owner/repo)",
-    )
-
-    @property
-    def is_production(self) -> bool:
-        """Check if running in production environment."""
-        return self.environment.lower() == "production"
-
-    @property
-    def cors_allow_credentials(self) -> bool:
-        """Allow credentials in CORS."""
-        return True
-
-    @property
-    def cors_allow_methods(self) -> List[str]:
-        """Allowed HTTP methods."""
-        return ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-
-    @property
-    def cors_allow_headers(self) -> List[str]:
-        """Allowed HTTP headers."""
-        return ["*"]
+    # GitHub Configuration (for automated retraining)
+    github_token: str = ""
+    github_repo: str = ""
+    github_workflow_id: str = "automated-retraining.yml"
 
 
-# Global settings instance
+# Create global settings instance
 settings = Settings()
