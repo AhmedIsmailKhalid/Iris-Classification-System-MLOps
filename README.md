@@ -749,23 +749,4 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 
 ---
 
-## 🙏 Acknowledgments
-
-- **scikit-learn** for the Iris dataset and ML algorithms
-- **FastAPI** for the modern web framework
-- **GitHub Actions** for free CI/CD
-- **Render & Vercel** for hosting platforms
-- **SHAP** library for model explainability
-- **Recharts** for beautiful data visualizations
-
----
-
-## ⭐ Star History
-
-If you find this project useful, please consider giving it a star! ⭐
-
----
-
-<br/>
-
 [⬆ Back to Top](#-iris-classification-system---production-mlops-pipeline)
