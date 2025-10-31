@@ -279,25 +279,26 @@ async def get_workflow_status() -> Dict:
             detail=f"Failed to retrieve workflow status: {str(e)}",
         )
 
+
 @router.get(
     "/model-registry",
     status_code=status.HTTP_200_OK,
     summary="Get model registry",
-    description="Get all registered models with their versions and metrics"
+    description="Get all registered models with their versions and metrics",
 )
 async def get_model_registry() -> Dict:
     """
     Get model registry with all versions.
-    
+
     Returns:
         Model registry with version history
     """
     try:
-        from pathlib import Path
         import json
-        
+        from pathlib import Path
+
         registry_path = Path("models/model_registry.json")
-        
+
         if not registry_path.exists():
             return {
                 "success": False,
@@ -305,17 +306,17 @@ async def get_model_registry() -> Dict:
                 "models": [],
                 "active_model": None,
             }
-        
+
         with open(registry_path, "r") as f:
             registry = json.load(f)
-        
+
         # Sort models by timestamp (newest first)
         models = sorted(
             registry.get("models", []),
             key=lambda m: m.get("timestamp", ""),
-            reverse=True
+            reverse=True,
         )
-        
+
         return {
             "success": True,
             "models": models,
@@ -323,10 +324,10 @@ async def get_model_registry() -> Dict:
             "total_models": len(models),
             "metadata": registry.get("metadata", {}),
         }
-        
+
     except Exception as e:
         logger.error(f"Failed to get model registry: {str(e)}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to retrieve model registry: {str(e)}"
+            detail=f"Failed to retrieve model registry: {str(e)}",
         )

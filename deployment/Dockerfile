@@ -27,10 +27,10 @@ RUN useradd -m -u 1000 appuser && \
 
 WORKDIR /app
 
-# Copy dependency files (pyproject.toml is enough, poetry will handle the rest)
+# Copy dependency files
 COPY --chown=appuser:appuser pyproject.toml ./
 
-# Install dependencies (this will generate poetry.lock if needed)
+# Install dependencies
 RUN poetry install --only main --no-root
 
 # Switch to non-root user
@@ -42,7 +42,7 @@ COPY --chown=appuser:appuser models/ ./models/
 COPY --chown=appuser:appuser data/ ./data/
 COPY --chown=appuser:appuser scripts/ ./scripts/
 
-# Generate dataset and train model
+# Generate dataset and train model if not exists
 RUN python scripts/generate_iris_data.py && \
     python scripts/train_model.py
 
