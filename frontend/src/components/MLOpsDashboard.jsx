@@ -3,7 +3,6 @@ import WorkflowStatusViewer from './WorkflowStatusViewer';
 import DriftMonitor from './DriftMonitor';
 import ModelVersionTimeline from './ModelVersionTimeline';
 import DriftVisualization from './DriftVisualization';
-import ArchitectureDiagram from './ArchitectureDiagram';
 
 const MLOpsDashboard = () => {
   return (
@@ -19,27 +18,11 @@ const MLOpsDashboard = () => {
           </p>
         </div>
 
-        <ArchitectureDiagram />
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left Column - Drift & Data + Model Version */}
           <div className="space-y-6">
-            {/* <DriftMonitor /> */}
 
-            {/* <div className="card">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">
-                📈 Model Version Timeline
-              </h3>
-              <p className="text-gray-500 text-sm">Coming soon...</p>
-            </div> */}
             <ModelVersionTimeline />
-
-            {/* <div className="card">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">
-                📊 Drift Visualization
-              </h3>
-              <p className="text-gray-500 text-sm">Coming soon...</p>
-            </div> */}
             <DriftVisualization />
 
           </div>
