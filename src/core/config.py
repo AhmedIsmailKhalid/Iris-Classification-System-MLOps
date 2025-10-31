@@ -4,9 +4,9 @@ Loads configuration from environment variables.
 """
 
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Union
 
-from pydantic import Field
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -24,10 +24,23 @@ class Settings(BaseSettings):
     api_description: str = "Production-grade ML classification API for Iris dataset"
 
     # CORS Configuration
-    allowed_origins: List[str] = [
-        "http://localhost:5173",  # Vite dev server
-        "http://localhost:3000",  # Alternative frontend port
+    allowed_origins: Union[List[str], str] = [
+        "http://localhost:5173",
+        "http://localhost:3000",
     ]
+
+    @field_validator("allowed_origins", mode="before")
+    @classmethod
+    def parse_allowed_origins(cls, v):
+        """Parse comma-separated string or list."""
+        if isinstance(v, str):
+            # Split by comma and strip whitespace
+            return [origin.strip() for origin in v.split(",")]
+        return v
+
+    cors_allow_credentials: bool = True
+    cors_allow_methods: List[str] = ["*"]
+    cors_allow_headers: List[str] = ["*"]
 
     # Model Configuration
     model_path: Path = Path("models/iris_classifier.joblib")
