@@ -83,3 +83,21 @@ export const checkDrift = async () => {
 };
 
 export default api;
+
+
+// Retraining endpoints
+export const triggerRetraining = async (force = false) => {
+  const response = await api.post(`/api/v1/monitoring/trigger-retraining?force=${force}`);
+  return response.data;
+};
+
+export const getWorkflowStatus = async () => {
+  const response = await api.get('/api/v1/monitoring/workflow-status');
+  return response.data;
+};
+
+// Model Registry
+export const getModelRegistry = async () => {
+  const response = await api.get('/api/v1/monitoring/model-registry');
+  return response.data;
+};

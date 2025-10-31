@@ -1,17 +1,24 @@
 import { useState, useEffect } from 'react';
-import { Activity, AlertTriangle, CheckCircle, RefreshCw, Zap } from 'lucide-react';
-import { getDataStats, generateData, checkDrift } from '../services/api';
+import { Activity, AlertTriangle, CheckCircle, RefreshCw, Zap, Rocket, Clock, ExternalLink } from 'lucide-react';
+import { getDataStats, generateData, checkDrift, triggerRetraining, getWorkflowStatus } from '../services/api';
 import LoadingSpinner from './LoadingSpinner';
 
 const DriftMonitor = () => {
   const [stats, setStats] = useState(null);
   const [driftResult, setDriftResult] = useState(null);
+  const [workflowStatus, setWorkflowStatus] = useState(null);
   const [loading, setLoading] = useState(false);
   const [checking, setChecking] = useState(false);
   const [generating, setGenerating] = useState(false);
+  const [retraining, setRetraining] = useState(false);
 
   useEffect(() => {
     loadStats();
+    loadWorkflowStatus();
+    
+    // Poll workflow status every 30 seconds
+    const interval = setInterval(loadWorkflowStatus, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   const loadStats = async () => {
@@ -23,11 +30,19 @@ const DriftMonitor = () => {
     }
   };
 
+  const loadWorkflowStatus = async () => {
+    try {
+      const data = await getWorkflowStatus();
+      setWorkflowStatus(data);
+    } catch (error) {
+      console.error('Failed to load workflow status:', error);
+    }
+  };
+
   const handleSimulateDrift = async () => {
     try {
       setGenerating(true);
       
-      // Generate drifted data
       await generateData({
         n_samples: 50,
         data_type: 'drifted',
@@ -35,10 +50,7 @@ const DriftMonitor = () => {
         drift_magnitude: 2.5,
       });
 
-      // Refresh stats
       await loadStats();
-      
-      // Auto-check drift
       await handleCheckDrift();
       
     } catch (error) {
@@ -61,6 +73,34 @@ const DriftMonitor = () => {
     }
   };
 
+  const handleTriggerRetraining = async () => {
+    try {
+      setRetraining(true);
+      const result = await triggerRetraining(false);
+      
+      if (result.success) {
+        alert(`✅ ${result.message}\n\nEstimated time: ${result.estimated_time || '3-5 minutes'}\n\nCheck GitHub Actions for live progress!`);
+        
+        // Start polling for updates
+        const pollInterval = setInterval(async () => {
+          await loadWorkflowStatus();
+          await loadStats();
+        }, 10000); // Every 10 seconds
+        
+        // Stop polling after 5 minutes
+        setTimeout(() => clearInterval(pollInterval), 300000);
+      } else {
+        alert(`❌ ${result.message}\n\n${result.error || ''}`);
+      }
+      
+    } catch (error) {
+      console.error('Failed to trigger retraining:', error);
+      alert('❌ Failed to trigger retraining. Check console for details.');
+    } finally {
+      setRetraining(false);
+    }
+  };
+
   const getDriftStatusColor = () => {
     if (!driftResult) return 'bg-gray-100 text-gray-700';
     if (driftResult.drift_detected) {
@@ -74,6 +114,21 @@ const DriftMonitor = () => {
     if (!driftResult) return <Activity className="w-5 h-5" />;
     if (driftResult.drift_detected) return <AlertTriangle className="w-5 h-5" />;
     return <CheckCircle className="w-5 h-5" />;
+  };
+
+  const getWorkflowStatusColor = (status, conclusion) => {
+    if (status === 'in_progress' || status === 'queued') return 'text-blue-600';
+    if (status === 'completed' && conclusion === 'success') return 'text-green-600';
+    if (status === 'completed' && conclusion === 'failure') return 'text-red-600';
+    return 'text-gray-600';
+  };
+
+  const getWorkflowStatusText = (status, conclusion) => {
+    if (status === 'in_progress') return '🔄 Running...';
+    if (status === 'queued') return '⏳ Queued';
+    if (status === 'completed' && conclusion === 'success') return '✅ Success';
+    if (status === 'completed' && conclusion === 'failure') return '❌ Failed';
+    return status;
   };
 
   if (!stats) {
@@ -90,10 +145,13 @@ const DriftMonitor = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Activity className="w-6 h-6 text-purple-600" />
-          <h3 className="text-lg font-bold text-gray-800">Drift Monitor</h3>
+          <h3 className="text-lg font-bold text-gray-800">MLOps Pipeline</h3>
         </div>
         <button
-          onClick={loadStats}
+          onClick={() => {
+            loadStats();
+            loadWorkflowStatus();
+          }}
           className="p-2 text-gray-600 hover:text-purple-600 transition-colors"
           title="Refresh"
         >
@@ -114,9 +172,34 @@ const DriftMonitor = () => {
           <div className="text-2xl font-bold text-purple-700">
             {stats.total_predictions}
           </div>
-          <div className="text-xs text-gray-600 mt-1">Total Predictions</div>
+          <div className="text-xs text-gray-600 mt-1">Predictions</div>
         </div>
       </div>
+
+      {/* Latest Workflow Status */}
+      {workflowStatus?.success && workflowStatus.runs?.length > 0 && (
+        <div className="bg-gray-50 rounded-lg p-3">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs font-semibold text-gray-700">Latest Workflow</span>
+            <a 
+              href={workflowStatus.runs[0].html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-blue-600 hover:text-blue-700 flex items-center gap-1"
+            >
+              View <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className={`text-sm font-medium ${getWorkflowStatusColor(workflowStatus.runs[0].status, workflowStatus.runs[0].conclusion)}`}>
+              {getWorkflowStatusText(workflowStatus.runs[0].status, workflowStatus.runs[0].conclusion)}
+            </span>
+            <span className="text-xs text-gray-500">
+              Run #{workflowStatus.runs[0].run_number}
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* Drift Status */}
       {driftResult && (
@@ -133,18 +216,18 @@ const DriftMonitor = () => {
                   <div>
                     Severity: {(driftResult.drift_severity * 100).toFixed(0)}%
                   </div>
-                  <div>
+                  <div className="text-xs">
                     Affected: {driftResult.drifted_features.join(', ')}
                   </div>
-                  <div className="font-semibold mt-2">
-                    Recommendation: {driftResult.recommendation.replace('_', ' ')}
+                  <div className="font-semibold mt-2 text-xs">
+                    📋 {driftResult.recommendation.replace('_', ' ').toUpperCase()}
                   </div>
                 </div>
               )}
               
               {!driftResult.drift_detected && (
                 <div className="text-sm">
-                  Data distribution is stable
+                  Data distribution is stable ✨
                 </div>
               )}
             </div>
@@ -160,7 +243,7 @@ const DriftMonitor = () => {
           className="w-full btn-primary flex items-center justify-center space-x-2"
         >
           <Zap className="w-5 h-5" />
-          <span>{generating ? 'Generating...' : '🌊 Simulate Data Drift'}</span>
+          <span>{generating ? 'Generating...' : ' Simulate Data Drift'}</span>
         </button>
 
         <button
@@ -173,21 +256,41 @@ const DriftMonitor = () => {
             {checking ? 'Checking...' : 'Check for Drift'}
           </span>
         </button>
+
+        <button
+          onClick={handleTriggerRetraining}
+          disabled={retraining || stats.new_data_samples < 30 || !driftResult?.drift_detected}
+          className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-2 px-4 rounded-lg font-medium hover:from-green-700 hover:to-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center space-x-2"
+        >
+          <Rocket className="w-5 h-5" />
+          <span>
+            {retraining ? 'Triggering...' : ' Trigger Retraining'}
+          </span>
+        </button>
         
         {stats.new_data_samples < 30 && (
           <p className="text-xs text-gray-500 text-center">
-            Need at least 30 samples to check drift
+            Need at least 30 samples
+          </p>
+        )}
+
+        {stats.new_data_samples >= 30 && !driftResult?.drift_detected && (
+          <p className="text-xs text-gray-500 text-center">
+            Run drift check first
           </p>
         )}
       </div>
 
       {/* Info */}
-      <div className="text-xs text-gray-500 pt-3 border-t">
-        <p className="mb-1">
-          💡 <strong>Simulate Drift:</strong> Generates synthetic data with distribution shift
+      <div className="text-xs text-gray-500 pt-3 border-t space-y-1">
+        <p>
+          <strong>Simulate Drift:</strong> Generates data with distribution shift
         </p>
         <p>
-          📊 <strong>Check Drift:</strong> Runs statistical tests (KS test, PSI) to detect changes
+          <strong>Check Drift:</strong> Runs KS test + PSI analysis
+        </p>
+        <p>
+          <strong>Trigger Retraining:</strong> Starts GitHub Actions workflow
         </p>
       </div>
     </div>

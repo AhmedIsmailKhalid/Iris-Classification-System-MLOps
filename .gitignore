@@ -41,7 +41,7 @@ poetry.lock
 # Testing
 .pytest_cache/
 .coverage
-htmlcov/
+# htmlcov/
 .tox/
 .hypothesis/
 
@@ -90,3 +90,7 @@ frontend/coverage/
 
 # Version History
 Version History.md
+
+# Architecture Diagram XML
+assets
+assets/Iris-Architecture-Diagram.drawio

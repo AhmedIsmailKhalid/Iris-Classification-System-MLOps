@@ -3,7 +3,6 @@ API routes for monitoring, drift detection, and data generation.
 """
 
 import logging
-from pathlib import Path
 from typing import Dict, Literal, Optional
 
 from fastapi import APIRouter, HTTPException, status
@@ -278,4 +277,56 @@ async def get_workflow_status() -> Dict:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to retrieve workflow status: {str(e)}",
+        )
+
+@router.get(
+    "/model-registry",
+    status_code=status.HTTP_200_OK,
+    summary="Get model registry",
+    description="Get all registered models with their versions and metrics"
+)
+async def get_model_registry() -> Dict:
+    """
+    Get model registry with all versions.
+    
+    Returns:
+        Model registry with version history
+    """
+    try:
+        from pathlib import Path
+        import json
+        
+        registry_path = Path("models/model_registry.json")
+        
+        if not registry_path.exists():
+            return {
+                "success": False,
+                "message": "No model registry found",
+                "models": [],
+                "active_model": None,
+            }
+        
+        with open(registry_path, "r") as f:
+            registry = json.load(f)
+        
+        # Sort models by timestamp (newest first)
+        models = sorted(
+            registry.get("models", []),
+            key=lambda m: m.get("timestamp", ""),
+            reverse=True
+        )
+        
+        return {
+            "success": True,
+            "models": models,
+            "active_model": registry.get("active_model"),
+            "total_models": len(models),
+            "metadata": registry.get("metadata", {}),
+        }
+        
+    except Exception as e:
+        logger.error(f"Failed to get model registry: {str(e)}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to retrieve model registry: {str(e)}"
         )

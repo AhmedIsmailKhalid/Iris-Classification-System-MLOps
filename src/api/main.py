@@ -5,6 +5,7 @@ Main FastAPI application entry point.
 import logging
 from contextlib import asynccontextmanager
 
+import uvicorn
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -155,7 +156,6 @@ async def log_requests(request: Request, call_next):
 
 
 if __name__ == "__main__":
-    import uvicorn
 
     uvicorn.run(
         "src.api.main:app",

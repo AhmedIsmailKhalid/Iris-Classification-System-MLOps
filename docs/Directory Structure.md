@@ -1,134 +1,123 @@
 # Directory Structure
 
 ```
-iris-ml-pipeline/
-│
-├── .github/
-│   └── workflows/
-│       ├── backend-ci.yml           # Backend CI
-│       ├── backend-cd.yml           # Backend CD
-│       ├── docker-publish.yml       # Docker image publishing
-│       ├── frontend-ci.yml          # Frontend CI
-│       └── frontend-deploy.yml      # Vercel deployment
-│
-├── src/
-│   ├── __init__.py
-│   ├── api/
-│   │   ├── __init__.py
-│   │   ├── main.py                  # FastAPI app
-│   │   ├── routes/
-│   │   │   ├── __init__.py
-│   │   │   ├── health.py            # Health check endpoints
-│   │   │   └── predict.py           # Prediction endpoints
-│   │   └── schemas/
-│   │       ├── __init__.py
-│   │       └── iris.py              # Pydantic models
-│   ├── core/
-│   │   ├── __init__.py
-│   │   ├── config.py                # Configuration management
-│   │   └── logging.py               # Logging setup
-│   ├── data/
-│   │   ├── __init__.py
-│   │   ├── load_data.py
-│   │   └── preprocess.py
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── train.py
-│   │   ├── predict.py
-│   │   └── model_loader.py          # Singleton model loader
-│   └── utils/
-│       ├── __init__.py
-│       └── metrics.py
-│
-├── tests/
-│   ├── __init__.py
-│   ├── conftest.py                  # Pytest fixtures
-│   ├── test_data.py
-│   ├── test_model.py
-│   └── test_api.py
-│
-├── data/
-│   ├── raw/
-│   │   └── iris.csv
-│   └── processed/
-│       └── .gitkeep
-│
-├── models/
-│   ├── .gitkeep
-│   └── model_registry.json
-│
-├── scripts/
-│   ├── train_model.py               # Training script
-│   └── evaluate_model.py            # Evaluation script
-│
-├── deployment/
-│   ├── Dockerfile
-│   ├── docker-compose.yml
-│   └── render.yaml
-│
-├── frontend/                         # React frontend
-│   ├── .github/
-│   │   └── workflows/
-│   │       └── vercel-deploy.yml    # Optional: Vercel deployment override
-│   │
-│   ├── public/
-│   │   ├── favicon.ico
-│   │   └── robots.txt
-│   │
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Header.jsx
-│   │   │   ├── PredictionForm.jsx
-│   │   │   ├── ResultDisplay.jsx
-│   │   │   ├── LoadingSpinner.jsx
-│   │   │   └── ErrorMessage.jsx
-│   │   ├── services/
-│   │   │   └── api.js               # Axios API calls
-│   │   ├── utils/
-│   │   │   └── validation.js
-│   │   ├── styles/
-│   │   │   └── index.css
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── config.js                # API endpoints config
-│   │
-│   ├── .env.example
-│   ├── .env.local                   # Local development
+Iris Classifier with Automated Testing
+├── .coverage
+├── .dockerignore
+├── .env
+├── .env.example
+├── .gitignore
+├── create_structure.bat
+├── LICENSE
+├── poetry.lock
+├── pyproject.toml
+├── README.md
+├── Version History.md
+├── .github
+│   └── workflows
+│       ├── automated-retraining.yml
+│       ├── backend-cd.yml
+│       ├── backend-ci.yml
+│       └── docker-publish.yml
+├── .pytest_cache
 │   ├── .gitignore
-│   ├── index.html
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── vite.config.js
-│   ├── tailwind.config.js
-│   ├── postcss.config.js
-│   ├── eslint.config.js
-│   ├── vercel.json                  # Vercel configuration
-│   └── README.md
-│
-├── docs/
+│   ├── CACHEDIR.TAG
+│   ├── README.md
+│   └── v
+│       └── cache
+├── data
+│   ├── monitoring
+│   │   └── new_data.csv
+│   ├── processed
+│   │   └── .gitkeep
+│   └── raw
+│       └── iris.csv
+├── deployment
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   └── render.yaml
+├── docs
 │   ├── Data Sources.md
 │   ├── Deployment & Infrastructure.md
-│   ├── Directory Strucutre.md
+│   ├── Directory Structure.md
 │   ├── Implementation Plan & Roadmap.md
 │   ├── Success Criteria.md
 │   ├── System Design Decisions.md
 │   └── Technology Stack.md
-│
-├── .env.example
-├── .gitignore
-├── .dockerignore
-├── pyproject.toml                   # Poetry config (Backend)
-├── poetry.lock
-├── LICENSE                          # MIT License
-└── README.md                        # Main project README
+├── frontend
+│   ├── .env.development
+│   ├── .env.example
+│   ├── .env.production
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   ├── README.md
+│   ├── tailwind.config.js
+│   ├── vercel.json
+│   ├── vite.config.js
+│   ├── .github
+│   │   └── workflows
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── robots.txt
+│   │   └── vite.svg
+│   └── src
+│       ├── App.css
+│       ├── App.jsx
+│       ├── config.js
+│       ├── index.css
+│       ├── main.jsx
+│       ├── assets
+│       ├── components
+│       ├── services
+│       ├── styles
+│       └── utils
+├── models
+│   ├── .gitkeep
+│   ├── iris_classifier.joblib
+│   └── model_registry.json
+├── scripts
+│   ├── evaluate_model.py
+│   ├── generate_iris_data.py
+│   ├── retrain_with_new_data.py
+│   └── train_model.py
+├── src
+│   ├── __init__.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── routes
+│   │   └── schemas
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   └── logging.py
+│   ├── data
+│   │   ├── __init__.py
+│   │   ├── load_data.py
+│   │   └── preprocess.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── model_loader.py
+│   │   ├── predict.py
+│   │   └── train.py
+│   └── monitoring
+│       ├── __init__.py
+│       ├── data_generator.py
+│       ├── data_logger.py
+│       ├── drift_detector.py
+│       └── github_integration.py
+└── tests
+    ├── __init__.py
+    ├── conftest.py
+    ├── test_api.py
+    ├── test_data.py
+    ├── test_model.py
+    ├── test_monitoring_api.py
+    ├── test_monitoring_data_generator.py
+    ├── test_monitoring_data_logger.py
+    └── test_monitoring_drift_detector.py
 ```
-
-## Benefits of This Structure
-
-| Benefit | Explanation |
-|---------|-------------|
-| **Cleaner root** | Backend is the "main" project, frontend is a submodule |
-| **Simpler imports** | `from src.api.main import app` instead of `from backend.src.api.main import app` |
-| **Standard Python** | Follows conventional Python project structure |
-| **Docker context** | Easier Dockerfile paths (no `backend/` prefix) |
-| **CI/CD simplicity** | Workflows reference paths without extra nesting |
