@@ -8,7 +8,7 @@
 
 **A production-grade MLOps system demonstrating automated model training, drift detection, and continuous deployment**
 
-[Live Demo](https://iris-classification-system-ml-ops.vercel.app/) • [GitHub Repo](#) • [Architecture](./Iris-Architecture-Diagram.png)
+[Live Demo](https://iris-classification-system-ml-ops.vercel.app/) • [GitHub Repo](https://github.com/AhmedIsmailKhalid/Iris-Classification-System-MLOps) • [Architecture](./Iris-Architecture-Diagram.png)
 
 </div>
 
