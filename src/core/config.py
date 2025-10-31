@@ -56,9 +56,7 @@ class Settings(BaseSettings):
 
     # Logging Configuration
     log_level: str = "INFO"
-    log_format: str = (
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
+    log_format: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
     # Environment
     environment: str = "development"

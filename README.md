@@ -2,20 +2,19 @@
 
 <div align="center">
 
-![Build Status](https://github.com/AhmedIsmailKhalid/Iris-Classification-System-MLOps/workflows/Backend%20CI/badge.svg)
-![Coverage](https://img.shields.io/badge/coverage-84%25-brightgreen)
+![Backend CI/CD](https://github.com/AhmedIsmailKhalid/Iris-Classification-System-MLOps/workflows/Backend%20CI/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 **A production-grade MLOps system demonstrating automated model training, drift detection, and continuous deployment**
 
-[Live Demo](#) • [API Documentation](#) • [Architecture](#architecture)
+[Live Demo](https://iris-classification-system-ml-ops.vercel.app/) • [GitHub Repo](#) • [Architecture](./Iris-Architecture-Diagram.png)
 
 </div>
 
 ---
 
-## 📊 Impact & Value
+## Impact & Value
 
 ### **Business Value Delivered**
 
@@ -733,7 +732,7 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
 
