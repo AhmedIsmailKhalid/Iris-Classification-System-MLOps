@@ -395,6 +395,17 @@
         "train_accuracy": 0.530688622754491
       },
       "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251120_125414_128068",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-20T12:54:14.128068",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
     }
   ],
   "active_model": "model_20251028_213904_972460",
