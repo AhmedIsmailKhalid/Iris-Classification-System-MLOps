@@ -89,8 +89,11 @@ frontend/coverage/
 *.tar
 
 # Version History
-# Version History.md
+Version History.md
 
 # Architecture Diagram XML
 assets
 assets/Iris-Architecture-Diagram.drawio
+
+# Versions
+Versions/
