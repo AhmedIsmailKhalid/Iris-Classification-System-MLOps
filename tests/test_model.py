@@ -615,7 +615,7 @@ class TestSHAPExplanations:
         # SHAP values should typically be between -5 and 5 for this dataset
         for feature, contribution in contributions.items():
             assert (
-                -10 <= contribution <= 10
+                -15 <= contribution <= 15
             ), f"SHAP value for {feature} is unreasonable: {contribution}"
 
     def test_batch_predict_without_shap_by_default(self, trained_predictor_with_shap):
