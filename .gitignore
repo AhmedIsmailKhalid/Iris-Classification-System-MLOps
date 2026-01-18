@@ -63,11 +63,11 @@ Thumbs.db
 # Model artifacts (if large, use Git LFS)
 # # models/*.joblib
 # models/*.pkl
-!models/.gitkeep
+# !models/.gitkeep
 
 # Data (if sensitive or large)
-data/processed/*
-!data/processed/.gitkeep
+# data/processed/*
+# !data/processed/.gitkeep
 
 # Logs
 *.log
