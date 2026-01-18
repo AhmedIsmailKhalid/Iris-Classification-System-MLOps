@@ -60,15 +60,6 @@ poetry.lock
 .DS_Store
 Thumbs.db
 
-# Model artifacts (if large, use Git LFS)
-# # models/*.joblib
-# models/*.pkl
-# !models/.gitkeep
-
-# Data (if sensitive or large)
-# data/processed/*
-# !data/processed/.gitkeep
-
 # Logs
 *.log
 logs/
