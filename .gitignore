@@ -83,8 +83,18 @@ frontend/coverage/
 Version History.md
 
 # Architecture Diagram XML
-assets
+<<<<<<< Updated upstream
 assets/Iris-Architecture-Diagram.drawio
 
 # Versions
 Versions/
+=======
+assets/Iris Architecture Diagram.drawio
+
+# Versions
+Versions/
+
+# Misc
+LINKS.txt  
+Iris Secretes
+>>>>>>> Stashed changes

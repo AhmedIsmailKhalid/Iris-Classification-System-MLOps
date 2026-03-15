@@ -5,7 +5,6 @@ Sets up structured logging with appropriate formatters.
 
 import logging
 import sys
-from typing import Any, Dict
 
 from src.core.config import settings
 
