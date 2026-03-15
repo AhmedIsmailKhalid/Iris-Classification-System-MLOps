@@ -60,15 +60,6 @@ poetry.lock
 .DS_Store
 Thumbs.db
 
-# Model artifacts (if large, use Git LFS)
-# # models/*.joblib
-# models/*.pkl
-!models/.gitkeep
-
-# Data (if sensitive or large)
-data/processed/*
-!data/processed/.gitkeep
-
 # Logs
 *.log
 logs/
@@ -89,8 +80,11 @@ frontend/coverage/
 *.tar
 
 # Version History
-# Version History.md
+Version History.md
 
 # Architecture Diagram XML
 assets
 assets/Iris-Architecture-Diagram.drawio
+
+# Versions
+Versions/

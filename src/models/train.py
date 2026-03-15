@@ -61,7 +61,6 @@ class IrisModelTrainer:
             return LogisticRegression(
                 random_state=self.random_state,
                 max_iter=self.max_iter,
-                multi_class="ovr",
                 solver="lbfgs",
             )
         else:

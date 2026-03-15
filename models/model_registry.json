@@ -10,6 +10,1975 @@
         "train_accuracy": 0.95
       },
       "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251101_020226_596284",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-01T02:02:26.596284",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251101_124709_778325",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-01T12:47:09.778325",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251102_020514_72861",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-02T02:05:14.072861",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251102_124622_315702",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-02T12:46:22.315702",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251103_020435_944921",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-03T02:04:35.944921",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251103_125447_742738",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-03T12:54:47.742738",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251104_015926_967154",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-04T01:59:26.967154",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251104_125712_650181",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-04T12:57:12.650181",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251105_020048_466686",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-05T02:00:48.466686",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251105_125443_971636",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-05T12:54:43.971636",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251106_020112_853080",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-06T02:01:12.853080",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251107_015940_964514",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-07T01:59:40.964514",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251107_125306_83650",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-07T12:53:06.083650",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251108_015334_806363",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-08T01:53:34.806363",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251108_124709_760804",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-08T12:47:09.760804",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251109_020414_592508",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-09T02:04:14.592508",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251109_124736_441768",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-09T12:47:36.441768",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251110_020550_628833",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-10T02:05:50.628833",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251110_125537_105407",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-10T12:55:37.105407",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251111_020149_359156",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-11T02:01:49.359156",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251111_125356_326759",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-11T12:53:56.326759",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251112_020050_4316",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-12T02:00:50.004316",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251112_125608_774109",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-12T12:56:08.774109",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251113_020304_534897",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-13T02:03:04.534897",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251113_125600_35135",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-13T12:56:00.035135",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251114_020125_536010",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-14T02:01:25.536010",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251115_015705_888774",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-15T01:57:05.888774",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251115_124823_450377",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-15T12:48:23.450377",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251116_020718_468738",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-16T02:07:18.468738",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251116_124802_944861",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-16T12:48:02.944861",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251117_020238_119488",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-17T02:02:38.119488",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251117_125441_990037",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-17T12:54:41.990037",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251118_125502_22196",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-18T12:55:02.022196",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251119_020033_981914",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-19T02:00:33.981914",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251120_015900_451041",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-20T01:59:00.451041",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251120_125414_128068",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-20T12:54:14.128068",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251121_015945_153741",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-21T01:59:45.153741",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251121_125313_200740",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-21T12:53:13.200740",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251122_124647_637104",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-22T12:46:47.637104",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251123_022052_107908",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-23T02:20:52.107908",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251123_124612_252369",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-23T12:46:12.252369",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251124_020852_997174",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-24T02:08:52.997174",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251124_125623_936478",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-24T12:56:23.936478",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251125_020203_530057",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-25T02:02:03.530057",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251125_125548_67029",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-25T12:55:48.067029",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251126_020216_257537",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-26T02:02:16.257537",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251126_125706_852445",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-26T12:57:06.852445",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251127_125543_820856",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-27T12:55:43.820856",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251128_015931_721571",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-28T01:59:31.721571",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251128_125421_811842",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-28T12:54:21.811842",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251129_015916_57965",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-29T01:59:16.057965",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251129_125047_754224",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-29T12:50:47.754224",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251130_021929_433595",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-11-30T02:19:29.433595",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251201_022801_904715",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-01T02:28:01.904715",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251201_125722_215071",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-01T12:57:22.215071",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251202_020415_459692",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-02T02:04:15.459692",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251203_020357_206692",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-03T02:03:57.206692",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251203_125817_27906",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-03T12:58:17.027906",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251204_020508_837226",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-04T02:05:08.837226",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251204_125824_64769",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-04T12:58:24.064769",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251205_020501_67908",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-05T02:05:01.067908",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251205_125521_678052",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-05T12:55:21.678052",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251206_015838_80495",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-06T01:58:38.080495",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251206_125111_458621",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-06T12:51:11.458621",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251207_021952_652815",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-07T02:19:52.652815",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251207_124950_987754",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-07T12:49:50.987754",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251208_020601_514388",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-08T02:06:01.514388",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251208_125646_841368",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-08T12:56:46.841368",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251209_020454_508436",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-09T02:04:54.508436",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251209_125839_131922",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-09T12:58:39.131922",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20251210_020655_374919",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2025-12-10T02:06:55.374919",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3103736992127848,
+        "train_accuracy": 0.530688622754491
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260117_073012_517883",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-17T07:30:12.517883",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260117_125334_211168",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-17T12:53:34.211168",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260118_022713_832685",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-18T02:27:13.832685",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260118_125357_121549",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-18T12:53:57.121549",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260119_022438_176635",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-19T02:24:38.176635",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260119_130507_168913",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-19T13:05:07.168913",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260120_021928_212207",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-20T02:19:28.212207",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260120_130553_9886",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-20T13:05:53.009886",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260121_022233_290972",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-21T02:22:33.290972",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260121_130451_991554",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-21T13:04:51.991554",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260122_022331_712126",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-22T02:23:31.712126",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260122_130542_463116",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-22T13:05:42.463116",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260123_021343_382174",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-23T02:13:43.382174",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260123_130238_463018",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-23T13:02:38.463018",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260124_020913_344718",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-24T02:09:13.344718",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260124_125454_614740",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-24T12:54:54.614740",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260125_023107_422006",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-25T02:31:07.422006",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260125_125640_852273",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-25T12:56:40.852273",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260126_022953_167594",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-26T02:29:53.167594",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260126_130356_371034",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-26T13:03:56.371034",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260127_022557_376066",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-27T02:25:57.376066",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260127_130556_319523",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-27T13:05:56.319523",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260128_022202_296953",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-28T02:22:02.296953",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260128_130608_223885",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-28T13:06:08.223885",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260129_023842_864294",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-29T02:38:42.864294",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260129_131335_975880",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-29T13:13:35.975880",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260130_023904_554301",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-30T02:39:04.554301",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260130_131141_350375",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-30T13:11:41.350375",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260131_023359_94039",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-31T02:33:59.094039",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260131_130254_149599",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-01-31T13:02:54.149599",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260201_031557_637596",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-01T03:15:57.637596",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260201_130511_245891",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-01T13:05:11.245891",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260202_024903_121111",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-02T02:49:03.121111",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260202_131618_719690",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-02T13:16:18.719690",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260203_024514_592053",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-03T02:45:14.592053",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260203_131718_182860",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-03T13:17:18.182860",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260204_023939_624479",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-04T02:39:39.624479",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260204_131622_4820",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-04T13:16:22.004820",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260205_131824_533484",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-05T13:18:24.533484",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260206_024223_593870",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-06T02:42:23.593870",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260206_131555_895774",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-06T13:15:55.895774",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260207_130428_549336",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-07T13:04:28.549336",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260208_032110_873287",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-08T03:21:10.873287",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260208_130534_895376",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-08T13:05:34.895376",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260209_024949_209117",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-09T02:49:49.209117",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260209_132520_265540",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-09T13:25:20.265540",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260210_031449_675719",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-10T03:14:49.675719",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260210_134052_400988",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-10T13:40:52.400988",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260211_025616_428810",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-11T02:56:16.428810",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260211_132658_987232",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-11T13:26:58.987232",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260212_025156_841279",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-12T02:51:56.841279",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260212_132503_324890",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-12T13:25:03.324890",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260213_025205_892735",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-13T02:52:05.892735",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260213_131654_801238",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-13T13:16:54.801238",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260214_023951_623105",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-14T02:39:51.623105",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260214_130437_903753",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-14T13:04:37.903753",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260215_025305_606286",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-15T02:53:05.606286",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260215_130647_150969",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-15T13:06:47.150969",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260216_024830_876027",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-16T02:48:30.876027",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260216_131957_704046",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-16T13:19:57.704046",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260217_024458_544457",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-17T02:44:58.544457",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260218_024823_811904",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-18T02:48:23.811904",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260219_024716_694299",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-19T02:47:16.694299",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260219_132318_814412",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-19T13:23:18.814412",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260220_024211_55249",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-20T02:42:11.055249",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260220_131423_962566",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-20T13:14:23.962566",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260221_023536_919143",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-21T02:35:36.919143",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260221_130345_736250",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-21T13:03:45.736250",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260222_024826_198525",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-22T02:48:26.198525",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260222_130528_432994",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-22T13:05:28.432994",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260223_024851_453568",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-23T02:48:51.453568",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260223_132132_514125",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-23T13:21:32.514125",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260224_024550_445469",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-24T02:45:50.445469",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260225_024648_140976",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-25T02:46:48.140976",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260225_132227_441041",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-25T13:22:27.441041",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260226_024154_553234",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-26T02:41:54.553234",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260226_132324_644311",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-26T13:23:24.644311",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260227_024041_180206",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-27T02:40:41.180206",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260227_131429_239723",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-27T13:14:29.239723",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260228_022913_1041",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-28T02:29:13.001041",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260228_125957_363471",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-02-28T12:59:57.363471",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260301_025535_193475",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-01T02:55:35.193475",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260301_130346_948623",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-01T13:03:46.948623",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260302_024324_857256",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-02T02:43:24.857256",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260302_131531_28918",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-02T13:15:31.028918",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260303_024603_85614",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-03T02:46:03.085614",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260303_131341_735277",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-03T13:13:41.735277",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260304_023842_353270",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-04T02:38:42.353270",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260304_131231_836261",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-04T13:12:31.836261",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260305_131643_382040",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-05T13:16:43.382040",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260306_023918_541461",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-06T02:39:18.541461",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260306_131210_352073",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-06T13:12:10.352073",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260307_023205_685531",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-07T02:32:05.685531",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260307_130216_870673",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-07T13:02:16.870673",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260308_024543_32268",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-08T02:45:43.032268",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260308_130349_802039",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-08T13:03:49.802039",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260309_024707_818161",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-09T02:47:07.818161",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260309_132014_194897",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-09T13:20:14.194897",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260310_023812_229024",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-10T02:38:12.229024",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260310_131802_983619",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-10T13:18:02.983619",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260311_023709_274366",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-11T02:37:09.274366",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260311_131738_414243",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-11T13:17:38.414243",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260312_024317_829800",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-12T02:43:17.829800",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260313_024113_92097",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-13T02:41:13.092097",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260313_131532_209096",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-13T13:15:32.209096",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260314_023945_312268",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-14T02:39:45.312268",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260314_130748_746547",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-14T13:07:48.746547",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260315_031739_555560",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-15T03:17:39.555560",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
     }
   ],
   "active_model": "model_20251028_213904_972460",
