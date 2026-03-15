@@ -8,7 +8,7 @@
 
 **A production-grade MLOps system demonstrating automated model training, drift detection, and continuous deployment**
 
-[Live Demo](https://iris-classification-system-ml-ops.vercel.app/) • [GitHub Repo](https://github.com/AhmedIsmailKhalid/Iris-Classification-System-MLOps) • [Architecture](./Iris-Architecture-Diagram.png)
+[Live Demo](https://iris-classification-system-ml-ops.vercel.app/) • [GitHub Repo](https://github.com/AhmedIsmailKhalid/Iris-Classification-System-MLOps) • [Architecture](assets/Iris-Architecture-Diagram.png)
 
 </div>
 
@@ -54,7 +54,7 @@ This project demonstrates enterprise-level MLOps capabilities that solve real pr
 
 ## Architecture
 
-![System Architecture](./Iris-Architecture-Diagram.png)
+![System Architecture](assets/Iris-Architecture-Diagram.png)
 
 ### **Design Principles**
 
