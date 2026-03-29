@@ -144,3 +144,10 @@
 - Updated `frontend/src/components/MLOpsDashboard.jsx` to add drift detection
 - **Version 1.6 ZIP File Created**
 - Pushed to Github
+
+---
+
+# Version 1.7
+- Implemented `Dockerfile`
+- Implemented ``
+- Implemented ``
