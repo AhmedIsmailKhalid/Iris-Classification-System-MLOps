@@ -28,7 +28,7 @@ jobs:
     permissions:
       contents: write
       actions: read
-      id-token: write  # Required for Workload Identity Federation
+      id-token: write
 
     steps:
     - name: Checkout code
@@ -185,19 +185,28 @@ jobs:
       if: steps.drift-check.outcome == 'success'
       uses: google-github-actions/setup-gcloud@v2
 
-    - name: Rebuild and redeploy to Cloud Run with new model
+    - name: Configure Docker for Artifact Registry
+      if: steps.drift-check.outcome == 'success'
+      run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+
+    - name: Set up Docker Buildx
+      if: steps.drift-check.outcome == 'success'
+      uses: docker/setup-buildx-action@v3
+
+    - name: Rebuild and push container with new model
+      if: steps.drift-check.outcome == 'success'
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: |
+          ${{ env.IMAGE }}:${{ github.sha }}
+          ${{ env.IMAGE }}:latest
+        platforms: linux/amd64
+
+    - name: Redeploy to Cloud Run
       if: steps.drift-check.outcome == 'success'
       run: |
-        echo "🚀 Rebuilding container with retrained model..."
-
-        gcloud builds submit \
-          --tag ${{ env.IMAGE }}:${{ github.sha }} \
-          --tag ${{ env.IMAGE }}:latest \
-          --timeout=20m \
-          --project=${{ env.PROJECT_ID }}
-
-        echo "🚀 Deploying updated model to Cloud Run..."
-
         gcloud run deploy ${{ env.SERVICE }} \
           --image ${{ env.IMAGE }}:${{ github.sha }} \
           --platform managed \
