@@ -8,53 +8,60 @@ on:
         required: false
         type: boolean
         default: false
-  
+
   schedule:
     - cron: '0 */12 * * *'
-  
+
   repository_dispatch:
     types: [retrain-model]
+
+env:
+  PROJECT_ID: portfolio-projects-491501
+  REGION: us-central1
+  SERVICE: iris-mlops-backend
+  IMAGE: us-central1-docker.pkg.dev/portfolio-projects-491501/portfolio-backends/iris-mlops-backend
 
 jobs:
   check-and-retrain:
     name: Check Drift & Retrain Model
     runs-on: ubuntu-latest
-    permissions:  
-      contents: write 
+    permissions:
+      contents: write
       actions: read
-    
+      id-token: write  # Required for Workload Identity Federation
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-    
+
     - name: Install Poetry
       uses: snok/install-poetry@v1
       with:
         version: 1.8.3
         virtualenvs-create: true
         virtualenvs-in-project: true
-    
+
     - name: Load cached venv
       id: cached-poetry-dependencies
       uses: actions/cache@v4
       with:
         path: .venv
         key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-    
+
     - name: Install dependencies
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: poetry install --no-interaction --no-root
-    
+
     - name: Install project
       run: poetry install --no-interaction
-    
+
     - name: Check for new data
       id: check-data
       run: |
@@ -67,7 +74,7 @@ jobs:
           echo "has_data=false" >> $GITHUB_OUTPUT
           echo "⚠️ No new data found"
         fi
-    
+
     - name: Generate test data if none exists
       if: steps.check-data.outputs.has_data != 'true'
       run: |
@@ -75,16 +82,15 @@ jobs:
         poetry run python -c "
         from src.monitoring.data_generator import SyntheticDataGenerator
         from src.monitoring.data_logger import DataLogger
-        
+
         generator = SyntheticDataGenerator()
         logger = DataLogger()
-        
-        # Generate drifted data
+
         data = generator.generate_drifted_data(n_samples=50, drift_type='shift', drift_magnitude=2.5)
         logger.save_new_data(data)
         print(f'✅ Generated {len(data)} synthetic samples for testing')
         "
-    
+
     - name: Run drift detection
       id: drift-check
       run: |
@@ -93,19 +99,19 @@ jobs:
         from src.monitoring.drift_detector import DriftDetector
         from src.monitoring.data_logger import DataLogger
         from src.data.load_data import load_iris_from_sklearn
-        
+
         detector = DriftDetector()
         logger = DataLogger()
-        
+
         reference_X, _ = load_iris_from_sklearn()
         new_data = logger.load_new_data()
-        
+
         if new_data is not None and len(new_data) >= 30:
             result = detector.detect_dataset_drift(reference_X, new_data)
             print(f'Drift detected: {result[\"drift_detected\"]}')
             print(f'Drift severity: {result[\"drift_severity\"]:.2%}')
             print(f'Recommendation: {result[\"recommendation\"]}')
-            
+
             if result['drift_detected']:
               print('✅ Drift detected - proceeding with retraining')
               exit(0)
@@ -117,44 +123,44 @@ jobs:
             exit(1)
         "
       continue-on-error: true
-    
+
     - name: Retrain model
       if: |
-        steps.drift-check.outcome == 'success' || 
+        steps.drift-check.outcome == 'success' ||
         github.event.inputs.force == 'true' ||
         github.event_name == 'repository_dispatch'
       run: |
         echo "🔄 Starting model retraining..."
-        
+
         FORCE_FLAG=""
         if [ "${{ github.event.inputs.force }}" == "true" ]; then
           FORCE_FLAG="--force"
         fi
-        
+
         poetry run python scripts/retrain_with_new_data.py $FORCE_FLAG
-    
+
     - name: Run all tests with coverage
       if: steps.drift-check.outcome == 'success'
       run: |
         echo "🧪 Running comprehensive test suite..."
         poetry run pytest tests/ -v --cov=src --cov-report=term-missing --cov-fail-under=80
-    
+
     - name: Commit new model
       if: steps.drift-check.outcome == 'success'
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        
+
         git add models/iris_classifier.joblib
         git add models/model_registry.json
-        
+
         MODEL_VERSION=$(poetry run python -c "
         import json
         from pathlib import Path
         registry = json.loads(Path('models/model_registry.json').read_text())
         print(registry['active_model'])
         ")
-        
+
         git commit -m "chore: automated model retraining - $MODEL_VERSION
 
         - Retrained with drift-detected data
@@ -162,28 +168,61 @@ jobs:
         - Triggered by: ${{ github.event_name }}
         - All tests passing ✅
         " || echo "No changes to commit"
-    
+
     - name: Push changes
       if: steps.drift-check.outcome == 'success'
-      run : |
+      run: |
         git push https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
-    
+
+    - name: Authenticate to Google Cloud
+      if: steps.drift-check.outcome == 'success'
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: projects/334263295854/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+        service_account: github-actions-iris@portfolio-projects-491501.iam.gserviceaccount.com
+
+    - name: Set up Cloud SDK
+      if: steps.drift-check.outcome == 'success'
+      uses: google-github-actions/setup-gcloud@v2
+
+    - name: Rebuild and redeploy to Cloud Run with new model
+      if: steps.drift-check.outcome == 'success'
+      run: |
+        echo "🚀 Rebuilding container with retrained model..."
+
+        gcloud builds submit \
+          --tag ${{ env.IMAGE }}:${{ github.sha }} \
+          --tag ${{ env.IMAGE }}:latest \
+          --timeout=20m \
+          --project=${{ env.PROJECT_ID }}
+
+        echo "🚀 Deploying updated model to Cloud Run..."
+
+        gcloud run deploy ${{ env.SERVICE }} \
+          --image ${{ env.IMAGE }}:${{ github.sha }} \
+          --platform managed \
+          --region ${{ env.REGION }} \
+          --project=${{ env.PROJECT_ID }}
+
+        echo "✅ New model deployed to Cloud Run"
+
     - name: Create summary
       if: always()
       run: |
         echo "## 🤖 Automated Retraining Summary" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        
+
         if [ "${{ steps.check-data.outputs.has_data }}" == "true" ]; then
           echo "✅ New data found: ${{ steps.check-data.outputs.samples }} samples" >> $GITHUB_STEP_SUMMARY
         else
           echo "✅ Generated synthetic drift data for testing" >> $GITHUB_STEP_SUMMARY
         fi
-        
+
         if [ "${{ steps.drift-check.outcome }}" == "success" ]; then
           echo "✅ Drift detected - retraining triggered" >> $GITHUB_STEP_SUMMARY
           echo "🔄 Model retrained and committed" >> $GITHUB_STEP_SUMMARY
-          echo "🧪 All 115 tests passing" >> $GITHUB_STEP_SUMMARY
+          echo "🚀 New model deployed to Cloud Run" >> $GITHUB_STEP_SUMMARY
+          echo "🧪 All tests passing" >> $GITHUB_STEP_SUMMARY
         else
           echo "ℹ️ No drift detected - model unchanged" >> $GITHUB_STEP_SUMMARY
         fi

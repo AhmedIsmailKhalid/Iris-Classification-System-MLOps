@@ -150,7 +150,7 @@
 # Version 1.7
 - Implemented `Dockerfile`
 - Updated `.github/workflows/backend-cd.yml`
-- Updated ``
+- Updated `.github/workflows/automated-retraining.yml`
 - Updated ``
 - Updated ``
 - Updated ``
