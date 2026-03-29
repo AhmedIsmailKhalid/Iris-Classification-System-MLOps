@@ -5,51 +5,84 @@ on:
     branches: [ main ]
     paths:
       - 'src/**'
-      - 'deployment/**'
       - 'models/**'
       - 'scripts/**'
       - 'pyproject.toml'
       - 'poetry.lock'
+      - 'Dockerfile'
   workflow_dispatch:
+
+env:
+  PROJECT_ID: portfolio-projects-491501
+  REGION: us-central1
+  SERVICE: iris-mlops-backend
+  IMAGE: us-central1-docker.pkg.dev/portfolio-projects-491501/portfolio-backends/iris-mlops-backend
 
 jobs:
   deploy:
-    name: Deploy to Render
+    name: Deploy to Cloud Run
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    
+
+    permissions:
+      contents: read
+      id-token: write  # Required for Workload Identity Federation
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
-    - name: Trigger Render Deployment
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: projects/334263295854/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+        service_account: github-actions-iris@portfolio-projects-491501.iam.gserviceaccount.com
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+
+    - name: Configure Docker for Artifact Registry
+      run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+
+    - name: Build and push container image
       run: |
-        echo "🚀 Deployment triggered on Render"
-        echo "Render will automatically pull and build from main branch"
-        echo "Monitor deployment at: https://dashboard.render.com"
-    
-    - name: Wait for deployment
+        gcloud builds submit \
+          --tag ${{ env.IMAGE }}:${{ github.sha }} \
+          --tag ${{ env.IMAGE }}:latest \
+          --timeout=20m \
+          --project=${{ env.PROJECT_ID }}
+
+    - name: Deploy to Cloud Run
       run: |
-        echo "⏳ Waiting for Render to complete deployment..."
-        sleep 30
-    
+        gcloud run deploy ${{ env.SERVICE }} \
+          --image ${{ env.IMAGE }}:${{ github.sha }} \
+          --platform managed \
+          --region ${{ env.REGION }} \
+          --allow-unauthenticated \
+          --port 8000 \
+          --memory 1Gi \
+          --cpu 1 \
+          --min-instances 0 \
+          --max-instances 2 \
+          --set-env-vars ENVIRONMENT=production,ALLOWED_ORIGINS="https://iris-classification-system-ml-7cp7zb1yj.vercel.app" \
+          --project=${{ env.PROJECT_ID }}
+
     - name: Health check
       run: |
-        if [ -n "${{ secrets.RENDER_API_URL }}" ]; then
-          echo "🔍 Checking deployment health..."
-          curl -f ${{ secrets.RENDER_API_URL }}/health || exit 1
-          echo "✅ Deployment successful and healthy!"
-        else
-          echo "⚠️  RENDER_API_URL not set. Skipping health check."
-          echo "Add your Render URL to repository secrets as RENDER_API_URL"
-        fi
-      continue-on-error: true
-    
+        SERVICE_URL=$(gcloud run services describe ${{ env.SERVICE }} \
+          --platform managed \
+          --region ${{ env.REGION }} \
+          --format 'value(status.url)' \
+          --project=${{ env.PROJECT_ID }})
+        echo "Service URL: $SERVICE_URL"
+        curl -f $SERVICE_URL/health
+        echo "✅ Deployment healthy"
+
     - name: Notify deployment status
       if: always()
       run: |
         if [ "${{ job.status }}" == "success" ]; then
-          echo "✅ Deployment completed successfully"
+          echo "✅ Deployment to Cloud Run completed successfully"
         else
           echo "❌ Deployment failed"
         fi
@@ -59,28 +92,42 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy
     if: github.ref == 'refs/heads/main'
-    
+
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: projects/334263295854/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+        service_account: github-actions-iris@portfolio-projects-491501.iam.gserviceaccount.com
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+
     - name: Test API endpoints
       run: |
-        if [ -n "${{ secrets.RENDER_API_URL }}" ]; then
-          echo "Testing health endpoint..."
-          curl -f ${{ secrets.RENDER_API_URL }}/health
-          
-          echo "Testing prediction endpoint..."
-          curl -X POST ${{ secrets.RENDER_API_URL }}/api/v1/predict \
-            -H "Content-Type: application/json" \
-            -d '{
-              "features": {
-                "sepal length (cm)": 5.1,
-                "sepal width (cm)": 3.5,
-                "petal length (cm)": 1.4,
-                "petal width (cm)": 0.2
-              }
-            }'
-          
-          echo "✅ All API endpoints working"
-        else
-          echo "⚠️  RENDER_API_URL not set. Skipping post-deployment tests."
-        fi
-      continue-on-error: true
+        SERVICE_URL=$(gcloud run services describe iris-mlops-backend \
+          --platform managed \
+          --region us-central1 \
+          --format 'value(status.url)' \
+          --project=portfolio-projects-491501)
+
+        echo "Testing health endpoint..."
+        curl -f $SERVICE_URL/health
+
+        echo "Testing prediction endpoint..."
+        curl -f -X POST $SERVICE_URL/api/v1/predict \
+          -H "Content-Type: application/json" \
+          -d '{
+            "features": {
+              "sepal length (cm)": 5.1,
+              "sepal width (cm)": 3.5,
+              "petal length (cm)": 1.4,
+              "petal width (cm)": 0.2
+            }
+          }'
+
+        echo "✅ All API endpoints working"

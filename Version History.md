@@ -149,5 +149,9 @@
 
 # Version 1.7
 - Implemented `Dockerfile`
-- Implemented ``
-- Implemented ``
+- Updated `.github/workflows/backend-cd.yml`
+- Updated ``
+- Updated ``
+- Updated ``
+- Updated ``
+- Updated ``
