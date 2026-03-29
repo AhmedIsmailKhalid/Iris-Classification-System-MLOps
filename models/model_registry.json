@@ -2243,6 +2243,28 @@
         "train_accuracy": 0.5336826347305389
       },
       "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260329_032057_918551",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-29T03:20:57.918551",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
+    },
+    {
+      "model_id": "model_20260329_131115_20100",
+      "model_path": "models/iris_classifier.joblib",
+      "timestamp": "2026-03-29T13:11:15.020100",
+      "metrics": {
+        "test_accuracy": 0.5269461077844312,
+        "test_f1_macro": 0.3034667664297294,
+        "train_accuracy": 0.5336826347305389
+      },
+      "model_type": "logistic_regression"
     }
   ],
   "active_model": "model_20251028_213904_972460",
