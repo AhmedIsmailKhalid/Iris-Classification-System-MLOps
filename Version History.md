@@ -151,7 +151,7 @@
 - Implemented `Dockerfile`
 - Updated `.github/workflows/backend-cd.yml`
 - Updated `.github/workflows/automated-retraining.yml`
-- Updated ``
+- Updated `.github/workflows/docker-publish.yml`
 - Updated ``
 - Updated ``
 - Updated ``

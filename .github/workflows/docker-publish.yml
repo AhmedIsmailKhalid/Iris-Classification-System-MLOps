@@ -10,56 +10,71 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  PROJECT_ID: portfolio-projects-491501
+  REGION: us-central1
+  IMAGE: us-central1-docker.pkg.dev/portfolio-projects-491501/portfolio-backends/iris-mlops-backend
 
 jobs:
   build-and-push:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
-      packages: write
-    
+      id-token: write  # Required for Workload Identity Federation
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-    
-    - name: Log in to Container Registry
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: projects/334263295854/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+        service_account: github-actions-iris@portfolio-projects-491501.iam.gserviceaccount.com
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+
+    - name: Configure Docker for Artifact Registry
+      run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+
+    - name: Set image tags
+      id: tags
+      run: |
+        SHA_TAG="${{ env.IMAGE }}:sha-${{ github.sha }}"
+        LATEST_TAG="${{ env.IMAGE }}:latest"
+
+        if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+          VERSION="${{ github.ref_name }}"
+          echo "tags=$SHA_TAG,$LATEST_TAG,${{ env.IMAGE }}:$VERSION" >> $GITHUB_OUTPUT
+        elif [ "${{ github.event_name }}" == "pull_request" ]; then
+          echo "tags=${{ env.IMAGE }}:pr-${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+        else
+          echo "tags=$SHA_TAG,$LATEST_TAG" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Build and push via Cloud Build
       if: github.event_name != 'pull_request'
-      uses: docker/login-action@v3
-      with:
-        registry: ${{ env.REGISTRY }}
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    
-    - name: Extract metadata
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=sha,prefix=sha-
-          type=raw,value=latest,enable={{is_default_branch}}
-    
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        file: ./deployment/Dockerfile
-        push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        platforms: linux/amd64
-    
+      run: |
+        gcloud builds submit \
+          --tag ${{ env.IMAGE }}:sha-${{ github.sha }} \
+          --tag ${{ env.IMAGE }}:latest \
+          --timeout=20m \
+          --project=${{ env.PROJECT_ID }}
+
+    - name: Build only (PR — no push)
+      if: github.event_name == 'pull_request'
+      run: |
+        docker build \
+          --tag ${{ env.IMAGE }}:pr-${{ github.event.pull_request.number }} \
+          .
+        echo "✅ Build successful — image not pushed for PRs"
+
     - name: Image digest
-      run: echo ${{ steps.meta.outputs.digest }}
+      if: github.event_name != 'pull_request'
+      run: |
+        gcloud artifacts docker images describe \
+          ${{ env.IMAGE }}:sha-${{ github.sha }} \
+          --project=${{ env.PROJECT_ID }} \
+          --format="value(image_summary.digest)"
