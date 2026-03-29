@@ -152,6 +152,6 @@
 - Updated `.github/workflows/backend-cd.yml`
 - Updated `.github/workflows/automated-retraining.yml`
 - Updated `.github/workflows/docker-publish.yml`
-- Updated ``
+- Updated `.github/workflows/backend-ci.yml`
 - Updated ``
 - Updated ``
