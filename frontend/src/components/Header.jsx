@@ -24,7 +24,7 @@ const Header = () => {
           {/* Navigation Links */}
           <div className="flex items-center space-x-4">
             <a
-              href="http://localhost:8000/docs"
+              href="https://iris-mlops-backend-334263295854.us-central1.run.app/docs"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors"
