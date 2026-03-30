@@ -146,7 +146,7 @@ Code Quality     : black 24.10.0, flake8 7.1.1, isort 5.13.2, mypy 1.13.0
 
 ### **Deployment & Infrastructure**
 ```
-Backend Hosting  : Render (Docker containers)
+Backend Hosting  : Google Cloud Run (Docker containers)
 Frontend Hosting : Vercel (CDN + Edge Network)
 CI/CD Platform   : GitHub Actions
 Version Control  : Git + GitHub
@@ -186,7 +186,7 @@ Drift Detection  : Kolmogorov-Smirnov test + Population Stability Index
 
 ### **5. Scalable Microservices Architecture**
 - **What**: Decoupled frontend/backend with stateless API design
-- **How**: FastAPI backend (Render) + React frontend (Vercel) with CORS-enabled REST API
+- **How**: FastAPI backend (Google Cloud Run) + React frontend (Vercel) with CORS-enabled REST API
 - **Impact**: Independent scaling and deployment of services
 
 ### **6. Interactive MLOps Dashboard**
@@ -297,10 +297,11 @@ Iris-Classification-System-MLOps/
 ├── deployment/
 │   ├── docker-compose.yml              # Local development
 │   ├── Dockerfile                      # Production container
-│   └── render.yaml                     # Render deployment config
+│   └── render.yaml                     # Render deployment config (No longer used as moved to Google Cloud)
 │
 ├── pyproject.toml                      # Poetry dependencies
 ├── poetry.lock                         # Locked dependencies
+├── Dockerfile                          # Pushing to Google GCP Artifact Registry
 └── README.md
 ```
 
@@ -595,7 +596,7 @@ Full interactive API documentation: http://localhost:8000/docs
 - ✅ Dependency caching for faster builds
 
 ### **2. Continuous Deployment (CD)**
-- ✅ Automated deployment to Render (backend)
+- ✅ Automated deployment to Google Cloud Run (backend)
 - ✅ Automated deployment to Vercel (frontend)
 - ✅ Docker image publishing to GHCR
 - ✅ Environment-specific configurations
@@ -652,7 +653,7 @@ This project demonstrates proficiency in:
 **DevOps & Cloud**
 - Docker containerization (multi-stage builds)
 - GitHub Actions automation (4 workflows)
-- Cloud deployment (Render, Vercel)
+- Cloud deployment (Google Cloud, Vercel)
 - Infrastructure as Code
 
 **Frontend Development**
@@ -754,7 +755,7 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 - **scikit-learn** for the Iris dataset and ML algorithms
 - **FastAPI** for the modern web framework
 - **GitHub Actions** for free CI/CD
-- **Render & Vercel** for hosting platforms
+- **Google Cloud Platform & Vercel** for hosting platforms
 - **SHAP** library for model explainability
 - **Recharts** for beautiful data visualizations
 
